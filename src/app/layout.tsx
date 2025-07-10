@@ -24,8 +24,8 @@ export default function RootLayout({
           <div className="min-h-screen">
             <Navbar />
             <NavbarMobile />
-            <main className="pt-20 pb-8">
-              <div className="container mx-auto px-4">
+            <main className="pt-24 pb-12">
+              <div className="container mx-auto px-4 max-w-6xl">
                 {children}
               </div>
             </main>

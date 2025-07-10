@@ -20,20 +20,24 @@ export default function Home() {
   }
 
   return (
-    <div className="space-y-8">
-      <div className="flex justify-center">
+    <div className="space-y-12">
+      <div className="flex justify-center py-4">
         <DarkModeToggle />
       </div>
       
       {showForm && (
-        <SearchForm onResults={handleSearchResults} />
+        <div className="max-w-4xl mx-auto">
+          <SearchForm onResults={handleSearchResults} />
+        </div>
       )}
       
       {searchResults && (
-        <SearchResults 
-          results={searchResults} 
-          onNewSearch={handleNewSearch}
-        />
+        <div className="max-w-6xl mx-auto">
+          <SearchResults 
+            results={searchResults} 
+            onNewSearch={handleNewSearch}
+          />
+        </div>
       )}
     </div>
   )

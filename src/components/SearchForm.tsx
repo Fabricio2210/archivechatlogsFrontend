@@ -127,112 +127,134 @@ export function SearchForm({ onResults }: SearchFormProps) {
   }
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <form onSubmit={handleSubmit} className={`border-form p-6 rounded-lg ${error ? 'animate-shake' : ''}`}>
+    <div className="max-w-2xl mx-auto px-4">
+      <form onSubmit={handleSubmit} className={`border-form p-8 rounded-lg ${error ? 'animate-shake' : ''}`}>
         {error && (
-          <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+          <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
             {error}
           </div>
         )}
         
-        <div className="space-y-4">
-          <div>
+        <div className="space-y-6">
+          <div className="form-section">
             <Input
               type="text"
               placeholder="Username"
               value={form.userName}
               onChange={(e) => setForm({ ...form, userName: e.target.value })}
-              className="mb-3"
+              className="w-full mb-4"
             />
             
-            <div className="mb-4">
-              <label className="block text-sm font-medium mb-2">Select the type of username search</label>
-              <div className="space-y-2">
-                <label className="flex items-center">
+            <div className="radio-group">
+              <label className="block text-sm label-text">Select the type of username search</label>
+              <div className="space-y-3 ml-2">
+                <label className="flex items-center radio-option">
                   <input
                     type="radio"
                     value="match"
                     checked={usernameSearchType === 'match'}
                     onChange={(e) => setUsernameSearchType(e.target.value)}
-                    className="mr-2"
+                    className="mr-3"
                   />
-                  Match
+                  <span>Match</span>
                 </label>
-                <label className="flex items-center">
+                <label className="flex items-center radio-option">
                   <input
                     type="radio"
                     value="prefix"
                     checked={usernameSearchType === 'prefix'}
                     onChange={(e) => setUsernameSearchType(e.target.value)}
-                    className="mr-2"
+                    className="mr-3"
                   />
-                  Prefix
+                  <span>Prefix</span>
                 </label>
-                <label className="flex items-center">
+                <label className="flex items-center radio-option">
                   <input
                     type="radio"
                     value="fuzz"
                     checked={usernameSearchType === 'fuzz'}
                     onChange={(e) => setUsernameSearchType(e.target.value)}
-                    className="mr-2"
+                    className="mr-3"
                   />
-                  Similar Matches
+                  <span>Similar Matches</span>
                 </label>
               </div>
             </div>
           </div>
 
-          <div>
+          <div className="form-section">
             <Input
               type="text"
               placeholder="Message"
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
-              className="mb-3"
+              className="w-full mb-4"
             />
             
-            <div className="mb-4">
-              <label className="block text-sm font-medium mb-2">Select the type of message search</label>
-              <div className="space-y-2">
-                <label className="flex items-center">
+            <div className="radio-group">
+              <label className="block text-sm label-text">Select the type of message search</label>
+              <div className="space-y-3 ml-2">
+                <label className="flex items-center radio-option">
                   <input
                     type="radio"
                     value="matchPhrase"
                     checked={messageSearchType === 'matchPhrase'}
                     onChange={(e) => setMessageSearchType(e.target.value)}
-                    className="mr-2"
+                    className="mr-3"
                   />
-                  Match phrase
+                  <span>Match phrase</span>
                 </label>
-                <label className="flex items-center">
+                <label className="flex items-center radio-option">
                   <input
                     type="radio"
                     value="matchPhrasePrefix"
                     checked={messageSearchType === 'matchPhrasePrefix'}
                     onChange={(e) => setMessageSearchType(e.target.value)}
-                    className="mr-2"
+                    className="mr-3"
                   />
-                  Match Phrase Prefix
+                  <span>Match Phrase Prefix</span>
                 </label>
               </div>
             </div>
           </div>
 
-          <Select
-            value={selectedChannel}
-            onChange={(e) => setSelectedChannel(e.target.value)}
-            className="mb-4"
-          >
-            {channels.map((channel) => (
-              <option key={channel.value} value={channel.value}>
-                {channel.label}
-              </option>
-            ))}
-          </Select>
+          <div className="form-section">
+            <Select
+              value={selectedChannel}
+              onChange={(e) => setSelectedChannel(e.target.value)}
+              className="w-full"
+            >
+              {channels.map((channel) => (
+                <option key={channel.value} value={channel.value}>
+                  {channel.label}
+                </option>
+              ))}
+            </Select>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium mb-1">Start Date</label>
+          <div className="form-section">
+            <div className="grid grid-cols-1 md:grid-cols-2 date-grid">
+              <div className="date-input-wrapper">
+                <label className="block text-sm label-text">Start Date</label>
+                <Input
+                  type="date"
+                  value={form.dateFrom}
+                  onChange={(e) => setForm({ ...form, dateFrom: e.target.value })}
+                  className="w-full"
+                />
+              </div>
+              <div className="date-input-wrapper">
+                <label className="block text-sm label-text">End Date</label>
+                <Input
+                  type="date"
+                  value={form.dateEnd}
+                  onChange={(e) => setForm({ ...form, dateEnd: e.target.value })}
+                  className="w-full"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
               <Input
                 type="date"
                 value={form.dateFrom}
@@ -250,6 +272,20 @@ export function SearchForm({ onResults }: SearchFormProps) {
           </div>
         </div>
 
+        <div className="mt-8">
+          <Button
+            type="submit"
+            disabled={!selectedChannel}
+            className="w-full"
+            size="lg"
+          >
+            {selectedChannel ? 'Search' : 'Choose a channel first'}
+          </Button>
+        </div>
+      </form>
+    </div>
+  )
+}
         <Button
           type="submit"
           disabled={!selectedChannel}
