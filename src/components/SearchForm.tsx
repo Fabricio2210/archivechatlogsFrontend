@@ -130,11 +130,11 @@ export function SearchForm({ onResults }: SearchFormProps) {
     <div className="max-w-2xl mx-auto px-4">
       <div className={`border-form ${error ? 'animate-shake' : ''}`}>
         <form onSubmit={handleSubmit} className="space-y-6">
-        {error && (
-          <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
-            {error}
-          </div>
-        )}
+          {error && (
+            <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
+              {error}
+            </div>
+          )}
         
           <div className="form-section">
             <label htmlFor="username" className="block text-sm font-medium mb-2">Username</label>
@@ -257,6 +257,7 @@ export function SearchForm({ onResults }: SearchFormProps) {
               </div>
             </div>
           </div>
+
           <Button
             type="submit"
             disabled={!selectedChannel}
@@ -265,21 +266,6 @@ export function SearchForm({ onResults }: SearchFormProps) {
           >
             {selectedChannel ? 'Search' : 'Choose a channel first'}
           </Button>
-        </form>
-      </div>
-    </div>
-  )
-}
-
-
-        <Button
-          type="submit"
-          disabled={!selectedChannel}
-          className="btn-primary w-full"
-          size="lg"
-        >
-          {selectedChannel ? 'Search' : 'Choose a channel first'}
-        </Button>
         </form>
       </div>
     </div>
