@@ -128,33 +128,34 @@ export function SearchForm({ onResults }: SearchFormProps) {
 
   return (
     <div className="max-w-2xl mx-auto px-4">
-      <form onSubmit={handleSubmit} className={`border-form ${error ? 'animate-shake' : ''}`}>
+      <div className={`border-form ${error ? 'animate-shake' : ''}`}>
+        <form onSubmit={handleSubmit} className="space-y-6">
         {error && (
           <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
             {error}
           </div>
         )}
         
-        <div className="space-y-6">
           <div className="form-section">
+            <label htmlFor="username" className="block text-sm font-medium mb-2">Username</label>
             <Input
+              id="username"
               type="text"
               placeholder="Username"
               value={form.userName}
               onChange={(e) => setForm({ ...form, userName: e.target.value })}
-              className="w-full mb-3"
+              className="input-field"
             />
             
             <div className="radio-group">
-              <label className="block text-sm font-medium mb-2">Select the type of username search</label>
-              <div className="space-y-3 ml-2">
+              <p className="text-sm font-medium mb-3">Select the type of username search</p>
+              <div className="space-y-2">
                 <label className="flex items-center radio-option">
                   <input
                     type="radio"
                     value="match"
                     checked={usernameSearchType === 'match'}
                     onChange={(e) => setUsernameSearchType(e.target.value)}
-                    className="mr-3"
                   />
                   <span>Match</span>
                 </label>
@@ -164,7 +165,6 @@ export function SearchForm({ onResults }: SearchFormProps) {
                     value="prefix"
                     checked={usernameSearchType === 'prefix'}
                     onChange={(e) => setUsernameSearchType(e.target.value)}
-                    className="mr-3"
                   />
                   <span>Prefix</span>
                 </label>
@@ -174,7 +174,6 @@ export function SearchForm({ onResults }: SearchFormProps) {
                     value="fuzz"
                     checked={usernameSearchType === 'fuzz'}
                     onChange={(e) => setUsernameSearchType(e.target.value)}
-                    className="mr-3"
                   />
                   <span>Similar Matches</span>
                 </label>
@@ -183,24 +182,25 @@ export function SearchForm({ onResults }: SearchFormProps) {
           </div>
 
           <div className="form-section">
+            <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
             <Input
+              id="message"
               type="text"
               placeholder="Message"
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
-              className="w-full mb-3"
+              className="input-field"
             />
             
             <div className="radio-group">
-              <label className="block text-sm font-medium mb-2">Select the type of message search</label>
-              <div className="space-y-3 ml-2">
+              <p className="text-sm font-medium mb-3">Select the type of message search</p>
+              <div className="space-y-2">
                 <label className="flex items-center radio-option">
                   <input
                     type="radio"
                     value="matchPhrase"
                     checked={messageSearchType === 'matchPhrase'}
                     onChange={(e) => setMessageSearchType(e.target.value)}
-                    className="mr-3"
                   />
                   <span>Match phrase</span>
                 </label>
@@ -210,7 +210,6 @@ export function SearchForm({ onResults }: SearchFormProps) {
                     value="matchPhrasePrefix"
                     checked={messageSearchType === 'matchPhrasePrefix'}
                     onChange={(e) => setMessageSearchType(e.target.value)}
-                    className="mr-3"
                   />
                   <span>Match Phrase Prefix</span>
                 </label>
@@ -219,10 +218,12 @@ export function SearchForm({ onResults }: SearchFormProps) {
           </div>
 
           <div className="form-section">
+            <label htmlFor="channel" className="block text-sm font-medium mb-2">Channel</label>
             <Select
+              id="channel"
               value={selectedChannel}
               onChange={(e) => setSelectedChannel(e.target.value)}
-              className="w-full"
+              className="input-field"
             >
               {channels.map((channel) => (
                 <option key={channel.value} value={channel.value}>
@@ -233,21 +234,25 @@ export function SearchForm({ onResults }: SearchFormProps) {
           </div>
 
           <div className="form-section">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="date-grid">
               <div>
-                <label className="block text-sm font-medium mb-1">Start Date</label>
+                <label htmlFor="dateFrom" className="block text-sm font-medium mb-2">Start Date</label>
                 <Input
+                  id="dateFrom"
                   type="date"
                   value={form.dateFrom}
                   onChange={(e) => setForm({ ...form, dateFrom: e.target.value })}
+                  className="input-field"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">End Date</label>
+                <label htmlFor="dateEnd" className="block text-sm font-medium mb-2">End Date</label>
                 <Input
+                  id="dateEnd"
                   type="date"
                   value={form.dateEnd}
                   onChange={(e) => setForm({ ...form, dateEnd: e.target.value })}
+                  className="input-field"
                 />
               </div>
             </div>
@@ -257,12 +262,13 @@ export function SearchForm({ onResults }: SearchFormProps) {
         <Button
           type="submit"
           disabled={!selectedChannel}
-          className="w-full mt-6"
+          className="btn-primary w-full"
           size="lg"
         >
           {selectedChannel ? 'Search' : 'Choose a channel first'}
         </Button>
-      </form>
+        </form>
+      </div>
     </div>
   )
 }
