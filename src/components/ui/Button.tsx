@@ -17,11 +17,11 @@ export function Button({
   return (
     <button
       className={cn(
-        'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+        'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50',
         {
-          'bg-primary text-white hover:bg-primary-hover': variant === 'primary',
-          'bg-gray-200 text-gray-900 hover:bg-gray-300': variant === 'secondary',
-          'hover:bg-gray-100 hover:text-gray-900': variant === 'ghost',
+          'btn-primary': variant === 'primary',
+          'bg-muted text-foreground hover:opacity-80': variant === 'secondary',
+          'hover:bg-muted hover:text-foreground': variant === 'ghost',
         },
         {
           'h-8 px-3 text-sm': size === 'sm',
