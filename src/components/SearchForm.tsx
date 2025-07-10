@@ -257,7 +257,20 @@ export function SearchForm({ onResults }: SearchFormProps) {
               </div>
             </div>
           </div>
-        </div>
+          <Button
+            type="submit"
+            disabled={!selectedChannel}
+            className="btn-primary w-full"
+            size="lg"
+          >
+            {selectedChannel ? 'Search' : 'Choose a channel first'}
+          </Button>
+        </form>
+      </div>
+    </div>
+  )
+}
+
 
         <Button
           type="submit"
