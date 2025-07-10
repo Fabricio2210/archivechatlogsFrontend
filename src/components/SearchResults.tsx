@@ -284,7 +284,7 @@ export function SearchResults({ results, onNewSearch }: SearchResultsProps) {
               variant="ghost"
               size="sm"
               onClick={scrollToTop}
-              className="fixed bottom-20 right-5 bg-primary text-white hover:bg-primary-hover rounded-full p-3"
+              className="fixed bottom-20 right-5 scroll-button rounded-full p-3"
             >
               <ArrowUp className="h-6 w-6" />
             </Button>
@@ -292,7 +292,7 @@ export function SearchResults({ results, onNewSearch }: SearchResultsProps) {
               variant="ghost"
               size="sm"
               onClick={scrollToBottom}
-              className="fixed bottom-5 right-5 bg-primary text-white hover:bg-primary-hover rounded-full p-3"
+              className="fixed bottom-5 right-5 scroll-button rounded-full p-3"
             >
               <ArrowDown className="h-6 w-6" />
             </Button>
@@ -303,7 +303,7 @@ export function SearchResults({ results, onNewSearch }: SearchResultsProps) {
               variant="ghost"
               size="sm"
               onClick={scrollToTop}
-              className="fixed bottom-14 right-2 bg-primary text-white hover:bg-primary-hover rounded-full p-2"
+              className="fixed bottom-14 right-2 scroll-button rounded-full p-2"
             >
               <ArrowUp className="h-4 w-4" />
             </Button>
@@ -311,7 +311,7 @@ export function SearchResults({ results, onNewSearch }: SearchResultsProps) {
               variant="ghost"
               size="sm"
               onClick={scrollToBottom}
-              className="fixed bottom-2 right-2 bg-primary text-white hover:bg-primary-hover rounded-full p-2"
+              className="fixed bottom-2 right-2 scroll-button rounded-full p-2"
             >
               <ArrowDown className="h-4 w-4" />
             </Button>
