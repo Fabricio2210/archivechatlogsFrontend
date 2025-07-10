@@ -128,9 +128,9 @@ export function SearchForm({ onResults }: SearchFormProps) {
 
   return (
     <div className="max-w-2xl mx-auto px-4">
-      <form onSubmit={handleSubmit} className={`border-form p-8 rounded-lg ${error ? 'animate-shake' : ''}`}>
+      <form onSubmit={handleSubmit} className={`border-form ${error ? 'animate-shake' : ''}`}>
         {error && (
-          <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+          <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
             {error}
           </div>
         )}
@@ -142,11 +142,11 @@ export function SearchForm({ onResults }: SearchFormProps) {
               placeholder="Username"
               value={form.userName}
               onChange={(e) => setForm({ ...form, userName: e.target.value })}
-              className="w-full mb-4"
+              className="w-full mb-3"
             />
             
             <div className="radio-group">
-              <label className="block text-sm label-text">Select the type of username search</label>
+              <label className="block text-sm font-medium mb-2">Select the type of username search</label>
               <div className="space-y-3 ml-2">
                 <label className="flex items-center radio-option">
                   <input
@@ -188,11 +188,11 @@ export function SearchForm({ onResults }: SearchFormProps) {
               placeholder="Message"
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
-              className="w-full mb-4"
+              className="w-full mb-3"
             />
             
             <div className="radio-group">
-              <label className="block text-sm label-text">Select the type of message search</label>
+              <label className="block text-sm font-medium mb-2">Select the type of message search</label>
               <div className="space-y-3 ml-2">
                 <label className="flex items-center radio-option">
                   <input
