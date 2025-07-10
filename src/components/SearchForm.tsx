@@ -233,59 +233,27 @@ export function SearchForm({ onResults }: SearchFormProps) {
           </div>
 
           <div className="form-section">
-            <div className="grid grid-cols-1 md:grid-cols-2 date-grid">
-              <div className="date-input-wrapper">
-                <label className="block text-sm label-text">Start Date</label>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium mb-1">Start Date</label>
                 <Input
                   type="date"
                   value={form.dateFrom}
                   onChange={(e) => setForm({ ...form, dateFrom: e.target.value })}
-                  className="w-full"
                 />
               </div>
-              <div className="date-input-wrapper">
-                <label className="block text-sm label-text">End Date</label>
+              <div>
+                <label className="block text-sm font-medium mb-1">End Date</label>
                 <Input
                   type="date"
                   value={form.dateEnd}
                   onChange={(e) => setForm({ ...form, dateEnd: e.target.value })}
-                  className="w-full"
                 />
               </div>
             </div>
           </div>
         </div>
-              <Input
-                type="date"
-                value={form.dateFrom}
-                onChange={(e) => setForm({ ...form, dateFrom: e.target.value })}
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1">End Date</label>
-              <Input
-                type="date"
-                value={form.dateEnd}
-                onChange={(e) => setForm({ ...form, dateEnd: e.target.value })}
-              />
-            </div>
-          </div>
-        </div>
 
-        <div className="mt-8">
-          <Button
-            type="submit"
-            disabled={!selectedChannel}
-            className="w-full"
-            size="lg"
-          >
-            {selectedChannel ? 'Search' : 'Choose a channel first'}
-          </Button>
-        </div>
-      </form>
-    </div>
-  )
-}
         <Button
           type="submit"
           disabled={!selectedChannel}
